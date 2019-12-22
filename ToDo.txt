@@ -1,0 +1,3 @@
+- publish the app
+- ahk snippets
+- howtos
