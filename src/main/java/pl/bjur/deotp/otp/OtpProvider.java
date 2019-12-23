@@ -12,6 +12,7 @@ public class OtpProvider {
     private static final int PIN_LENGTH = 6; // HOTP or TOTP
     public static final int DEFAULT_INTERVAL = 30;
     private final String otpSecret;
+    private final TotpCounter mTotpCounter = new TotpCounter(DEFAULT_INTERVAL);
 
     public String getCode() throws Exception {
         long otpState = 0;
@@ -42,7 +43,6 @@ public class OtpProvider {
         if (secret == null || secret.length() == 0) {
             throw new Exception("Null or empty secret");
         }
-        //System.out.println("OTPState: "+otpState);
         try {
             PasscodeGenerator.Signer signer = getSigningOracle(secret);
             PasscodeGenerator pcg = new PasscodeGenerator(signer, PIN_LENGTH);
@@ -80,20 +80,7 @@ public class OtpProvider {
         return Base32String.decode(secret);
     }
 
-    String getSecret() {
-        return otpSecret;
-    }
-
-    /**
-     * Counter for time-based OTPs (TOTP).
-     */
-    private final TotpCounter mTotpCounter = new TotpCounter(DEFAULT_INTERVAL);
-    ;
-
     private long currentUnixTime() {
-        //long l = Calendar.getInstance().get(Calendar.MILLISECOND);
-        long l = System.currentTimeMillis() / 1000L;
-        //System.out.println("currentUnixTime: " + l);
-        return l;
+        return System.currentTimeMillis() / 1000L;
     }
 }

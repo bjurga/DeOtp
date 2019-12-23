@@ -42,24 +42,6 @@ public class TotpCounter {
     }
 
     /**
-     * Gets the frequency with which the value of this counter changes.
-     *
-     * @return interval of time (seconds) between successive changes of this counter's value.
-     */
-    public long getTimeStep() {
-        return mTimeStep;
-    }
-
-    /**
-     * Gets the earliest time instant at which this counter assumes the value {@code 0}.
-     *
-     * @return time (seconds since UNIX epoch).
-     */
-    public long getStartTime() {
-        return mStartTime;
-    }
-
-    /**
      * Gets the value of this counter at the specified time.
      *
      * @param time time instant (seconds since UNIX epoch) for which to obtain the value.
@@ -89,16 +71,6 @@ public class TotpCounter {
         } else {
             return (timeSinceStartTime - (mTimeStep - 1)) / mTimeStep;
         }
-    }
-
-    /**
-     * Gets the time when the counter assumes the specified value.
-     *
-     * @param value value.
-     * @return earliest time instant (seconds since UNIX epoch) when the counter assumes the value.
-     */
-    public long getValueStartTime(long value) {
-        return mStartTime + (value * mTimeStep);
     }
 
     private static void assertValidTime(long time) {
