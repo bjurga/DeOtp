@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 1.8
+
+jar {
+    enabled(true)
+    manifest {
+        attributes "Main-Class": "pl.bjur.deotp.Main"
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+group 'pl.bjur'
+version '1.0-SNAPSHOT'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
