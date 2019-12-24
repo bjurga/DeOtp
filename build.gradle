@@ -4,6 +4,19 @@ plugins {
 
 sourceCompatibility = 1.8
 
+group 'pl.bjur'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+libsDirName = './' //place the .jar into main buuild dir
 jar {
     enabled(true)
     manifest {
@@ -16,16 +29,23 @@ jar {
     }
 }
 
-group 'pl.bjur'
-version '1.0-SNAPSHOT'
-
-
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+task go {
+    dependsOn jar
+    group "build"
+    doLast {
+        copy {
+            from file('src/main/resources/AHK_template.txt')
+            into file("$buildDir")
+        }
+        copy {
+            from file('src/main/resources/getDeOptToClipboard.bat')
+            into file("$buildDir")
+        }
+        copy {
+            from file('./README.md')
+            into file("$buildDir")
+            rename('README.md', '!_README.txt')
+        }
+        delete ("${buildDir}/classes", "${buildDir}/generated", "${buildDir}/resources", "${buildDir}/tmp")
+    }
 }

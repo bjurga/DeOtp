@@ -1,0 +1,9 @@
+;;;;;;; DeOtp example Start
+;; Update <<KEY>> and <<PATH>> to the values of your choice
+
+::<<KEY>>::
+Clipboard := ""
+Run, <<PATH>>\getDeOptToClipboard.bat <<KEY>>, <<PATH>>, Hide
+ClipWait, 3
+Send, ^v
+return

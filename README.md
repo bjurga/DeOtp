@@ -21,6 +21,7 @@ Changes to the original app are:
 - check is it's working
 
 2. DeOTP is keeping your secrets in %userhome%/.deotp/deotp.conf file. //TODO: commands examples
+- run "gradle go". it will generate required files into "build" directory.
 - each entry has following format: deotp.secret.your_key=your_otp_secret_string
 - when you run DeOTP with one argument it is treated as a request for TOTP code for a given your_key.
 - use 2 arguments to save your_key and your_secret in the config.
