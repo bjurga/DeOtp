@@ -1,5 +1,6 @@
 # DeOtp
 When you'r forced to use OTP and session is expiring quickly - DeOtp to the rescue - highly insecure stuff!
+In other words: DeOtp is a command line OTP code generator.
 
 # Story
 You are working in a company that protects it's internal system with OTP. You are using in often, but not frequent enough to keep the quick expiring session alive. You are feeling like wasting your time on retyping codes from your smartphone.
@@ -29,5 +30,5 @@ Changes to the original app are:
 
 3. AHK tips:
 - hotstrings
-- //TODO: windows apps (window searching)
-- //TODO: browser (image searching)
+- //TODO: windows apps (window searching + auto-paste)
+- //TODO: browser (image searching + auto-paste)
