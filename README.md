@@ -1,4 +1,6 @@
-# DeOtp
+<a href="https://github.com/bjurga/DeOtp/actions"><img alt="GitHub Actions status" src="https://github.com/bjurga/DeOtp/workflows/Test%26Build/badge.svg"></a>
+
+# DeOtp <a href="https://github.com/bjurga/DeOtp/actions"><img alt="GitHub Actions status" src="https://github.com/bjurga/DeOtp/workflows/Test%26Build/badge.svg"></a>
 When you'r forced to use OTP and session is expiring quickly - DeOtp to the rescue - highly insecure stuff!
 In other words: DeOtp is a command line OTP code generator.
 
